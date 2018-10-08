@@ -1,1 +1,13 @@
 redis定时的demo
+
+项目运行前的一些准备
+1.redis定时的原理大概就是利用该机制可以在key失效之后，提供一个回调，实际上是redis会给客户端发送一个消息。
+是需要redis版本2.8以上，在redis.conf配置需设置notify-keyspace-events Ex
+
+2.下载该项目后，可以自行删除mybatis的相关配置，或者替换成自己的相关的配置(我没删是因为比较懒，可能有时间心情好久改了)
+
+3.logback.xml中有几个路径的配置，需要替换成为你自己电脑上的有效路径，否则会报错
+
+4.如果那个唯一的pojo你没有干掉，那你需要安装loombook的插件
+
+项目正常启动后访问controller中的testJedis2接口，redis会将你之前保存在redis中的key推在com.ryan.demo.redis.KeyExpiredListener中的onPMessage方法推送给你。
